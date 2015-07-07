@@ -62,7 +62,7 @@ class Yo {
     {
         if(isset($options) && !empty($options))
         {
-            $this->setOptions(array_merge($this->getOptions(), $options));
+            $this->setOptions(array_filter(array_merge($this->getOptions(), $options)));
         }
     }
 
@@ -112,9 +112,13 @@ class Yo {
         $this->setApiUrl('yo/');
     }
 
-    public function all()
+    public function all($link)
     {
+        // Merge the link to the options array.
+        $this->mergeOptions(['link' => $link]);
 
+        // Set the API url/
+        $this->setApiUrl('yoall/');
     }
 
     public function createAccount()
@@ -190,7 +194,7 @@ class Yo {
         if(isset($link_or_location) && !empty($link_or_location))
         {
             // Check if the parameter is a link.
-            if(Yo::isLink($link_or_location))
+            if(Yo::isUrl($link_or_location))
             {
                 // Push the link to the options array.
                 $this->mergeOptions(['link' => $link_or_location]);
@@ -206,22 +210,28 @@ class Yo {
     }
 
     /**
-     * @param $link
+     * Check if the given string is a valid url.
+     *
+     * @param $url
      *
      * @return bool
      */
-    private static function isLink($link)
+    private static function isUrl($url)
     {
-        return (bool)filter_var($link, FILTER_VALIDATE_URL);
+        // Return if url.
+        return (bool)filter_var($url, FILTER_VALIDATE_URL);
     }
 
     /**
+     * Check if the given string is a long;lat string.
+     *
      * @param $long_lat
      *
      * @return bool
      */
     private static function isLongLat($long_lat)
     {
+        // Return if long;lat.
         return (bool)preg_match('/^(?<latitude>[-]?[0-8]?[0-9]\.\d+|[-]?90\.0+?)(?<delimeter>.)(?<longitude>[-]?1[0-7][0-9]\.\d+|[-]?[0-9]?[0-9]\.\d+|[-]?180\.0+?)$/', $long_lat);
     }
 
