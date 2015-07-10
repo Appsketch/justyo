@@ -96,11 +96,8 @@ class Yo {
 
     public function user($username, $link_or_location = null)
     {
-        // Username.
-        $username = $this->username($username);
-
-        // Merge username to the options array.
-        $this->mergeOptions(['username' => $username]);
+        // Merge the username to the options array.
+        $this->setUsername($username);
 
         // Check the options array.
         $this->checkOptions(['username']);
@@ -112,28 +109,43 @@ class Yo {
         $this->setApiUrl('yo/');
     }
 
-    public function all($link)
+    public function all($link = null)
     {
         // Merge the link to the options array.
         $this->mergeOptions(['link' => $link]);
 
-        // Set the API url/
+        // Set the API url.
         $this->setApiUrl('yoall/');
     }
 
-    public function createAccount()
+    public function createAccount($usename)
     {
+        // Merge the username to the options array.
+        $this->setUsername($usename);
 
+        // Check the options array.
+        $this->checkOptions(['username']);
+
+        // Set the API url.
+        $this->setApiUrl('accounts/');
     }
 
-    public function checkUsername()
+    public function checkUsername($username)
     {
+        // Merge the username to the options array.
+        $this->setUsername($username);
 
+        // Check the options array.
+        $this->checkOptions(['username']);
+
+        // Set the API url.
+        $this->setApiUrl('check_username');
     }
 
     public function subscribers()
     {
-
+        // Set the API url.
+        $this->setApiUrl('subscribers_count/');
     }
 
     private function initOptions()
@@ -168,19 +180,19 @@ class Yo {
     }
 
     /**
-     * Edit the username.
+     * Merge the username to the options array.
      *
      * @param $username
      *
      * @return string
      */
-    private function username($username)
+    private function setUsername($username)
     {
         // Uppercase the username.
         $username = strtoupper($username);
 
-        // Return the username.
-        return $username;
+        // Merge username to the options array.
+        $this->mergeOptions(['username' => $username]);
     }
 
     /**
