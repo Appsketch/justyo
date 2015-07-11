@@ -1,5 +1,5 @@
 {
-    "name": "m44rt3np44uw/yolaravel",
+    "name": "m44rt3np44uw/justyo",
     "description": "A Yo wrapper for Laravel 5 and 5.1.",
     "keywords": ["laravel", "yo", "justyo"],
     "licence" : "MIT",
@@ -11,7 +11,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "M44rt3np44uw\\Yolaravel\\": "src/"
+            "M44rt3np44uw\\Justyo\\": "src/"
         }
     },
     "require": {
@@ -23,7 +23,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "M44rt3np44uw\\Yolaravel\\Tests\\": "tests/"
+            "M44rt3np44uw\\Justyo\\Tests\\": "tests/"
         }
     },
     "minimum-stability": "stable"

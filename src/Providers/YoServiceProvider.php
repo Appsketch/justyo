@@ -1,11 +1,11 @@
 <?php
 
-namespace M44rt3np44uw\Yolaravel\Providers;
+namespace M44rt3np44uw\Justyo\Providers;
 
 use GuzzleHttp\Client;
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\ServiceProvider;
-use M44rt3np44uw\Yolaravel\Yo;
+use M44rt3np44uw\Justyo\Yo;
 
 /**
  * Class YoServiceProvider
@@ -76,7 +76,7 @@ class YoServiceProvider extends ServiceProvider
         {
             AliasLoader::getInstance()->alias(
                 'Yo',
-                \M44rt3np44uw\Yolaravel\Facades\Yo::class
+                \M44rt3np44uw\Justyo\Facades\Yo::class
             );
         }
     }

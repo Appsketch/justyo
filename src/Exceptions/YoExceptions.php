@@ -6,12 +6,12 @@
  * Time: 22:03
  */
 
-namespace M44rt3np44uw\Yolaravel\Exceptions;
+namespace M44rt3np44uw\Justyo\Exceptions;
 
 /**
  * Class YoExceptions
  *
- * @package M44rt3np44uw\Yolaravel\Exceptions
+ * @package M44rt3np44uw\Justyo\Exceptions
  */
 class YoExceptions extends \Exception
 {

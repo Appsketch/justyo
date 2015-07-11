@@ -6,16 +6,16 @@
  * Time: 21:24
  */
 
-namespace M44rt3np44uw\Yolaravel;
+namespace M44rt3np44uw\Justyo;
 
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Config;
-use M44rt3np44uw\Yolaravel\Exceptions\YoExceptions;
+use M44rt3np44uw\Justyo\Exceptions\YoExceptions;
 
 /**
  * Class Yo
  *
- * @package M44rt3np44uw\Yolaravel
+ * @package M44rt3np44uw\Justyo
  */
 class Yo {
 
