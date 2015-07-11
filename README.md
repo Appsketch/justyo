@@ -1,5 +1,7 @@
 # Yo Laravel
 
+[![Latest Stable Version](https://poser.pugx.org/m44rt3np44uw/justyo/v/stable)](https://packagist.org/packages/m44rt3np44uw/justyo) [![Total Downloads](https://poser.pugx.org/m44rt3np44uw/justyo/downloads)](https://packagist.org/packages/m44rt3np44uw/justyo) [![Latest Unstable Version](https://poser.pugx.org/m44rt3np44uw/justyo/v/unstable)](https://packagist.org/packages/m44rt3np44uw/justyo) [![License](https://poser.pugx.org/m44rt3np44uw/justyo/license)](https://packagist.org/packages/m44rt3np44uw/justyo)
+
 ## Installation
 
 First, pull in the package through Composer.
