@@ -2,7 +2,7 @@
     "name": "m44rt3np44uw/justyo",
     "description": "A Yo wrapper for Laravel 5 and 5.1.",
     "keywords": ["laravel", "yo", "justyo"],
-    "licence" : "MIT",
+    "license" : "MIT",
     "authors": [
         {
             "name": "Maarten Paauw",
