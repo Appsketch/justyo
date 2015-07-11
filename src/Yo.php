@@ -218,6 +218,19 @@ class Yo {
     }
 
     /**
+     * An alias for createAccount.
+     *
+     * @param       $username
+     * @param array $account_data
+     *
+     * @return mixed
+     */
+    public function create($username, $account_data = array())
+    {
+        return $this->createAccount($username, $account_data);
+    }
+
+    /**
      * Check the username.
      *
      * @param $username
@@ -238,6 +251,18 @@ class Yo {
 
         // Return result.
         return $this->get();
+    }
+
+    /**
+     * An alias for checkUsername.
+     *
+     * @param $username
+     *
+     * @return mixed
+     */
+    public function check($username)
+    {
+        return $this->checkUsername($username);
     }
 
     /**
