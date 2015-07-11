@@ -65,16 +65,20 @@ class Yo {
      */
     public function getOptions($array_key = null)
     {
+        // Check if the array key isset and not empty.
         if(isset($array_key) && !empty($array_key))
         {
+            // Set options with prefix key.
             $options = [$array_key => $this->options];
         }
 
         else
         {
+            // Set the current options.
             $options = $this->options;
         }
 
+        // Return the options.
         return $options;
     }
 
@@ -95,8 +99,10 @@ class Yo {
      */
     public function mergeOptions($options = [])
     {
+        // Check if the options isset and not empty.
         if(isset($options) && !empty($options))
         {
+            // Merge the options with the current options.
             $this->setOptions(array_filter(array_merge($this->getOptions(), $options)));
         }
     }
