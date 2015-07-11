@@ -70,6 +70,9 @@ Route::get('/yo/check/m44rt3np44uw', function()
 {
     // Check if the username exists.
     $result = Yo::checkUsername('m44rt3np44uw');
+    
+    // Echo the result.
+    echo $result;
 });
 
 Route::get('/yo/create', function()
