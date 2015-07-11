@@ -28,16 +28,16 @@ class Yo {
      * PARAMETERS
      */
     const PARAMETERS = array(
-        'username',
-        'password',
-        'callback_url',
-        'email',
-        'description',
-        'needs_location',
         'api_token',
-        'welcome_link',
+        'callback_url',
+        'description',
+        'email',
         'link',
-        'location'
+        'location',
+        'needs_location',
+        'password',
+        'welcome_link',
+        'username'
     );
 
     /**
