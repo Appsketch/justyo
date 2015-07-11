@@ -8,6 +8,7 @@
 
 namespace M44rt3np44uw\Yolaravel;
 
+use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Config;
 use M44rt3np44uw\Yolaravel\Exceptions\YoExceptions;
 
@@ -24,6 +25,22 @@ class Yo {
     const API_URL = "http://api.justyo.co/";
 
     /**
+     * PARAMETERS
+     */
+    const PARAMETERS = array(
+        'username',
+        'password',
+        'callback_url',
+        'email',
+        'description',
+        'needs_location',
+        'api_token',
+        'welcome_link',
+        'link',
+        'location'
+    );
+
+    /**
      * @var
      */
     private $options;
@@ -31,16 +48,34 @@ class Yo {
     /**
      * @var
      */
+    private $client;
+
+    /**
+     * @var
+     */
     private $api_url;
+
 
     /**
      * Get options.
      *
-     * @return mixed
+     * @param $array_key
+     *
+     * @return array
      */
-    public function getOptions()
+    public function getOptions($array_key = null)
     {
-        return $this->options;
+        if(isset($array_key) && !empty($array_key))
+        {
+            $options = [$array_key => $this->options];
+        }
+
+        else
+        {
+            $options = $this->options;
+        }
+
+        return $options;
     }
 
     /**
@@ -58,7 +93,7 @@ class Yo {
      *
      * @param $options
      */
-    public function mergeOptions($options)
+    public function mergeOptions($options = [])
     {
         if(isset($options) && !empty($options))
         {
@@ -83,17 +118,31 @@ class Yo {
     }
 
     /**
-     * @throws \Exception
+     * @param Client $client
+     *
+     * @throws YoExceptions
      */
-    public function __construct()
+    public function __construct(Client $client)
     {
+        // Set the client.
+        $this->client = $client;
+
         // Initialize the options array.
         $this->initOptions();
 
         // Check the config array.
-        $this->checkOptions(['api_key']);
+        $this->checkOptions(['api_token']);
     }
 
+    /**
+     * Yo a specific user.
+     *
+     * @param      $username
+     * @param null $link_or_location
+     *
+     * @return mixed
+     * @throws YoExceptions
+     */
     public function user($username, $link_or_location = null)
     {
         // Merge the username to the options array.
@@ -107,29 +156,69 @@ class Yo {
 
         // Set the API url.
         $this->setApiUrl('yo/');
+
+        // Return result.
+        return $this->post();
     }
 
+    /**
+     * Yo all the subscribers.
+     *
+     * @param null $link
+     *
+     * @return mixed
+     */
     public function all($link = null)
     {
-        // Merge the link to the options array.
-        $this->mergeOptions(['link' => $link]);
+        // Check if the given parameter is a valid url.
+        if(Yo::isUrl($link))
+        {
+            // Merge the link to the options array.
+            $this->mergeOptions(['link' => $link]);
+        }
 
         // Set the API url.
         $this->setApiUrl('yoall/');
+
+        // Return result.
+        return $this->post();
     }
 
-    public function createAccount($usename)
+    /**
+     * Create an account.
+     *
+     * @param       $username
+     * @param array $account_data
+     *
+     * @return mixed
+     * @throws YoExceptions
+     */
+    public function createAccount($username, $account_data = array())
     {
         // Merge the username to the options array.
-        $this->setUsername($usename);
+        $this->setUsername($username);
 
         // Check the options array.
         $this->checkOptions(['username']);
 
         // Set the API url.
         $this->setApiUrl('accounts/');
+
+        // Account data
+        $this->setAccountData($account_data);
+
+        // Return result.
+        return $this->post();
     }
 
+    /**
+     * Check the username.
+     *
+     * @param $username
+     *
+     * @return mixed
+     * @throws YoExceptions
+     */
     public function checkUsername($username)
     {
         // Merge the username to the options array.
@@ -139,15 +228,29 @@ class Yo {
         $this->checkOptions(['username']);
 
         // Set the API url.
-        $this->setApiUrl('check_username');
+        $this->setApiUrl('check_username/');
+
+        // Return result.
+        return $this->get();
     }
 
+    /**
+     * Get the subscribers count.
+     *
+     * @return mixed
+     */
     public function subscribers()
     {
         // Set the API url.
         $this->setApiUrl('subscribers_count/');
+
+        // Return result.
+        return $this->get();
     }
 
+    /**
+     * Initialize the options array.
+     */
     private function initOptions()
     {
         // Get config options.
@@ -219,6 +322,63 @@ class Yo {
                 $this->mergeOptions(['location' => $link_or_location]);
             }
         }
+    }
+
+    /**
+     * Set the account data.
+     *
+     * @param array $account_data
+     */
+    private function setAccountData($account_data = array())
+    {
+        // Check if the data isset and not empty.
+        if(isset($account_data) && !empty($account_data))
+        {
+            // Get the fillable parameters.
+            $parameters = Yo::PARAMETERS;
+
+            // Loop through the given options.
+            foreach ($account_data as $parameter => $value)
+            {
+                // If the key is not a valid parameter unset it.
+                if(!in_array($parameter, $parameters))
+                {
+                    // Unset the non valid options.
+                    unset($account_data[$parameter]);
+                }
+            }
+
+            // Merge the options to the options array.
+            $this->mergeOptions($account_data);
+        }
+    }
+
+    /**
+     * Post request.
+     *
+     * @return mixed
+     */
+    private function post()
+    {
+        // Result.
+        $result = $this->client->post($this->getApiUrl(), $this->getOptions('form_params'));
+
+        // Return result.
+        return $result->getBody();
+    }
+
+    /**
+     * Get request.
+     *
+     * @return mixed
+     */
+    private function get()
+    {
+        // Result.
+        $result = $this->client->get($this->getApiUrl(), $this->getOptions('query'));
+
+        // Return result.
+        return $result->getBody();
     }
 
     /**

@@ -10,5 +10,5 @@ return [
     | https://dev.justyo.co/
     |
     */
-    'api_key' => 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
+    'api_token' => ''
 ];

@@ -2,6 +2,7 @@
 
 namespace M44rt3np44uw\Yolaravel\Providers;
 
+use GuzzleHttp\Client;
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\ServiceProvider;
 use M44rt3np44uw\Yolaravel\Yo;
@@ -34,6 +35,9 @@ class YoServiceProvider extends ServiceProvider
         // Merge config.
         $this->mergeConfig();
 
+        // Register bindings.
+        $this->registerBindings();
+
         // Register Yo.
         $this->registerYo();
 
@@ -42,13 +46,24 @@ class YoServiceProvider extends ServiceProvider
     }
 
     /**
+     * Register bindings.
+     */
+    private function registerBindings()
+    {
+        $this->app->bind('yo.client', function()
+        {
+            return new Client();
+        });
+    }
+
+    /**
      * Register Yo.
      */
     private function registerYo()
     {
-        $this->app->bind('yo', function()
+        $this->app->bind('yo', function($app)
         {
-            return new Yo();
+            return new Yo($app['yo.client']);
         });
     }
 

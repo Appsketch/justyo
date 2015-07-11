@@ -1,9 +1,21 @@
 {
     "name": "m44rt3np44uw/yolaravel",
+    "description": "A Yo wrapper for Laravel 5 and 5.1.",
+    "keywords": ["laravel", "yo", "justyo"],
+    "licence" : "MIT",
+    "authors": [
+        {
+            "name": "Maarten Paauw",
+            "email": "maartenpaauw@gmail.com"
+        }
+    ],
     "autoload": {
         "psr-4": {
             "M44rt3np44uw\\Yolaravel\\": "src/"
         }
+    },
+    "require": {
+        "guzzlehttp/guzzle": "6.0.*"
     },
     "require-dev": {
         "phpunit/phpunit": "4.*",
@@ -13,5 +25,6 @@
         "psr-4": {
             "M44rt3np44uw\\Yolaravel\\Tests\\": "tests/"
         }
-    }
+    },
+    "minimum-stability": "stable"
 }
