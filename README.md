@@ -73,6 +73,9 @@ Route::get('/yo/check/m44rt3np44uw', function()
     // Check if the username exists.
     $result = Yo::checkUsername('m44rt3np44uw');
     
+    // Alias
+    $result = Yo::check('m44rt3np44uw');
+    
     // Echo the result.
     echo $result;
 });
@@ -84,5 +87,8 @@ Route::get('/yo/create', function()
 
     // Create a new Yo user.
     Yo::createAccount('m44rt3np44uw', $account_data);
+    
+    // Alias
+    Yo::create('m44rt3np44uw', $account_data);
 });
 ```
