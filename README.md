@@ -31,7 +31,9 @@ If using Laravel 5. Include this service provider.
 Publish the config file to the config folder with the following command.
 `php artisan vendor:publish`
 
-Fill out the config file.
+Fill out the config file. Set the api_token to the default api token.
+If you want to use multiple accounts fill out the accounts array with as
+key the account name (uppercase) and as value the api_token.
 
 ## Usage
 
@@ -40,29 +42,59 @@ Within, for example the routes.php add this.
 ```php
 Route::get('/yo/all', function()
 {
+    // Link
+    $link    = "http://www.google.com/";
+    $account = "m44rt3np44uw";
+
     // Send a Yo to all subscribers.
     Yo::all();
     
+    // Send a Yo from a specific account to all subscribers.
+    Yo::account($account)->all();
+    
     // Send a Yo with a link to all subscribers.
     Yo::all($link);
+    
+    // Send a Yo from a specific account with a link to all subscribers.
+    Yo::account($account)->all($link);
 });
 
 Route::get('/yo/m44rt3np44uw', function()
 {
+    // Link
+    $link     = "http://www.google.com/";
+    $location = "54;4";
+    $account  = "m44rt3np44uw";
+    
     // Send a Yo to me.
     Yo::user('m44rt3np44uw');
+    
+    // Send a Yo from a specific account to me.
+    Yo::account($account)->user('m44rt3np44uw');
     
     // Send a Yo to me with a link.
     Yo::user('m44rt3np44uw', $link);
     
+    // Send a Yo from a specific account to me with a link.
+    Yo::account($account)->user('m44rt3np44uw', $link);
+    
     // Send a Yo to me with a location.
     Yo::user('m44rt3np44uw', $location);
+    
+    // Send a Yo from a specific account to me with a location.
+    Yo::account($account)->user('m44rt3np44uw', $location);
 });
 
 Route::get('/yo/subscribers', function()
 {
+    // Account
+    $account = "m44rt3np44uw";
+    
     // Get the number of subscribers.
     $subscribers = Yo::subscribers();
+    
+    // Get the number of subscribers from a specific account.
+    $subscribers = Yo::account($account)->subscribers();
     
     // Echo the number of subscribers.
     echo $subscribers;
