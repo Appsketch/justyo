@@ -204,6 +204,40 @@ class Yo {
     }
 
     /**
+     * Send a Yo to multiple users.
+     *
+     * @param array $users
+     * @param null  $link_or_location
+     *
+     * @return array|string
+     */
+    public function users($users = [], $link_or_location = null)
+    {
+        // Result
+        $results = [];
+
+        // Check if the usernames array isset and not empty.
+        if(isset($users) && !empty($users) && is_array($users))
+        {
+            // Loop through the users.
+            foreach ($users as $count => $username)
+            {
+                // Send a Yo for each user.
+                $result = json_decode($this->user($username, $link_or_location));
+
+                // Update the results array.
+                $results[$count] = $result;
+            }
+        }
+
+        // JSON encode.
+        $results = json_encode($results);
+
+        // Return the results.
+        return $results;
+    }
+
+    /**
      * Yo all the subscribers.
      *
      * @param null $link
@@ -235,7 +269,7 @@ class Yo {
      * @return mixed
      * @throws YoExceptions
      */
-    public function createAccount($username, $account_data = array())
+    public function createAccount($username, $account_data = [])
     {
         // Merge the username to the options array.
         $this->setUsername($username);
@@ -261,7 +295,7 @@ class Yo {
      *
      * @return mixed
      */
-    public function create($username, $account_data = array())
+    public function create($username, $account_data = [])
     {
         return $this->createAccount($username, $account_data);
     }
@@ -396,7 +430,7 @@ class Yo {
      *
      * @param array $account_data
      */
-    private function setAccountData($account_data = array())
+    private function setAccountData($account_data = [])
     {
         // Check if the data isset and not empty.
         if(isset($account_data) && !empty($account_data))
