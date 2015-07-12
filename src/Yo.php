@@ -141,6 +141,42 @@ class Yo {
     }
 
     /**
+     * Set the account to use.
+     *
+     * If the account don't exists in the accounts array
+     * The default will be used.
+     *
+     * @param $account
+     *
+     * @return $this
+     */
+    public function account($account)
+    {
+        // Uppercase account.
+        $account = strtoupper($account);
+
+        // Get all the accounts from the config file.
+        $accounts = Config::get('yo.accounts');
+
+        // Check if the accounts array isset and not empty.
+        if(isset($accounts) && !empty($accounts) && is_array($accounts))
+        {
+            // Check if the given account exists.
+            if(array_key_exists($account, $accounts))
+            {
+                // Update the new api_token.
+                $this->mergeOptions(['api_token' => $accounts[$account]]);
+            }
+        }
+
+        // Check the options array.
+        $this->checkOptions(['api_token']);
+
+        // Return this.
+        return $this;
+    }
+
+    /**
      * Yo a specific user.
      *
      * @param      $username
@@ -285,10 +321,10 @@ class Yo {
     private function initOptions()
     {
         // Get config options.
-        $config_options = Config::get('yo');
+        $config_options = Config::get('yo.api_token');
 
         // Push the config options to the options array.
-        $this->setOptions($config_options);
+        $this->setOptions(['api_token' => $config_options]);
     }
 
     /**
@@ -305,7 +341,7 @@ class Yo {
         foreach ($required_options as $required_option)
         {
             // Throw exception if the key is not set.
-            if(!array_key_exists($required_option, $options) && !isset($options[$required_option]) && empty($options[$required_option]))
+            if(!array_key_exists($required_option, $options) || !isset($options[$required_option]) || empty($options[$required_option]))
             {
                 // Throw exception.
                 throw new YoExceptions($required_option);
@@ -391,7 +427,7 @@ class Yo {
      */
     private function post()
     {
-        // Result.
+        // The post result.
         $result = $this->client->post($this->getApiUrl(), $this->getOptions('form_params'));
 
         // Return result.
@@ -405,7 +441,7 @@ class Yo {
      */
     private function get()
     {
-        // Result.
+        // The get result.
         $result = $this->client->get($this->getApiUrl(), $this->getOptions('query'));
 
         // Return result.
