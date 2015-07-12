@@ -43,7 +43,9 @@ Within, for example the routes.php add this.
 Route::get('/yo/all', function()
 {
     // Link
-    $link    = "http://www.google.com/";
+    $link = "http://www.google.com/";
+    
+    // Account
     $account = "m44rt3np44uw";
 
     // Send a Yo to all subscribers.
@@ -59,12 +61,49 @@ Route::get('/yo/all', function()
     Yo::account($account)->all($link);
 });
 
+Route::get('/yo/m44rt3np44uw+pizza', function()
+{
+    // Link
+    $link = "http://www.google.com/";
+    
+    // Location
+    $location = "54;4";
+    
+    // Account
+    $account = "m44rt3np44uw";
+    
+    // Users
+    $users = ["m44rt3np44uw", "pizza"];
+    
+    // Send a yo to multiple users.
+    Yo::users($users);
+    
+    // Send a yo to multiple users from a specific account.
+    Yo::account($account)->users($users);
+    
+    // Send a yo to multiple users with a link.
+    Yo::users($users, $link);
+    
+    // Send a yo to multiple users with a link from a specific account.
+    Yo::account($account)->users($users, $link);
+    
+    // Send a yo to multiple users with a location.
+    Yo::users($users, $location);
+    
+    // Send a yo to multiple users with a location from a specific account.
+    Yo::account($account)->users($users, $location);
+});
+
 Route::get('/yo/m44rt3np44uw', function()
 {
     // Link
-    $link     = "http://www.google.com/";
+    $link = "http://www.google.com/";
+    
+    // Location
     $location = "54;4";
-    $account  = "m44rt3np44uw";
+    
+    // Account
+    $account = "m44rt3np44uw";
     
     // Send a Yo to me.
     Yo::user('m44rt3np44uw');

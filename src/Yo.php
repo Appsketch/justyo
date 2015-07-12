@@ -216,7 +216,7 @@ class Yo {
         // Result
         $results = [];
 
-        // Check if the usernames array isset and not empty.
+        // Check if the users array isset and not empty.
         if(isset($users) && !empty($users) && is_array($users))
         {
             // Loop through the users.
