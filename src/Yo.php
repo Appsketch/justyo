@@ -25,22 +25,6 @@ class Yo {
     const API_URL = "http://api.justyo.co/";
 
     /**
-     * PARAMETERS
-     */
-    const PARAMETERS = array(
-        'api_token',
-        'callback_url',
-        'description',
-        'email',
-        'link',
-        'location',
-        'needs_location',
-        'password',
-        'welcome_link',
-        'username'
-    );
-
-    /**
      * @var
      */
     private $options;
@@ -55,6 +39,10 @@ class Yo {
      */
     private $api_url;
 
+    /**
+     * @var
+     */
+    private $parameters;
 
     /**
      * Get options.
@@ -124,6 +112,22 @@ class Yo {
     }
 
     /**
+     * @return mixed
+     */
+    public function getParameters()
+    {
+        return $this->parameters;
+    }
+
+    /**
+     * @param mixed $parameters
+     */
+    public function setParameters($parameters)
+    {
+        $this->parameters = $parameters;
+    }
+
+    /**
      * @param Client $client
      *
      * @throws YoExceptions
@@ -132,6 +136,20 @@ class Yo {
     {
         // Set the client.
         $this->client = $client;
+
+        $this->setParameters([
+            'api_token',
+            'callback_url',
+            'cover',
+            'description',
+            'email',
+            'link',
+            'location',
+            'needs_location',
+            'password',
+            'welcome_link',
+            'username'
+        ]);
 
         // Initialize the options array.
         $this->initOptions();
@@ -436,7 +454,7 @@ class Yo {
         if(isset($account_data) && !empty($account_data))
         {
             // Get the fillable parameters.
-            $parameters = Yo::PARAMETERS;
+            $parameters = $this->getParameters();
 
             // Loop through the given options.
             foreach ($account_data as $parameter => $value)
