@@ -68,7 +68,7 @@ class YoServiceProvider extends ServiceProvider
      */
     private function registerYo()
     {
-        $this->app->bind('M44rt3np44uw\Justyo\Yo', function($app)
+        $this->app->bind('Appsketch\Justyo\Yo', function($app)
         {
             return new Yo($app['GuzzleHttp\Client']);
         });
@@ -128,7 +128,7 @@ class YoServiceProvider extends ServiceProvider
     public function provides()
     {
         return [
-            'M44rt3np44uw\Justyo\Yo',
+            'Appsketch\Justyo\Yo',
             'GuzzleHttp\Client'
         ];
     }

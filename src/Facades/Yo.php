@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Facade;
 /**
  * Class Yo
  *
- * @package M44rt3np44uw\Justyo\Facades
+ * @package Appsketch\Justyo\Facades
  */
 class Yo extends Facade {
 
@@ -16,7 +16,7 @@ class Yo extends Facade {
      */
     protected static function getFacadeAccessor()
     {
-        return 'M44rt3np44uw\Justyo\Yo';
+        return 'Appsketch\Justyo\Yo';
     }
 
 }

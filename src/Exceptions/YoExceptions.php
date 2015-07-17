@@ -5,7 +5,7 @@ namespace Appsketch\Justyo\Exceptions;
 /**
  * Class YoExceptions
  *
- * @package M44rt3np44uw\Justyo\Exceptions
+ * @package Appsketch\Justyo\Exceptions
  */
 class YoExceptions extends \Exception
 {

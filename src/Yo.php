@@ -9,7 +9,7 @@ use Appsketch\Justyo\Exceptions\YoExceptions;
 /**
  * Class Yo
  *
- * @package M44rt3np44uw\Justyo
+ * @package Appsketch\Justyo
  */
 class Yo {
 

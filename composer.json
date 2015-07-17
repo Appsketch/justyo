@@ -11,7 +11,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "M44rt3np44uw\\Justyo\\": "src/"
+            "Appsketch\\Justyo\\": "src/"
         }
     },
     "require": {
@@ -23,7 +23,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "M44rt3np44uw\\Justyo\\Tests\\": "tests/"
+            "Appsketch\\Justyo\\Tests\\": "tests/"
         }
     },
     "minimum-stability": "stable"
