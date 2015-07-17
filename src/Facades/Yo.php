@@ -22,7 +22,7 @@ class Yo extends Facade {
      */
     protected static function getFacadeAccessor()
     {
-        return 'yo';
+        return 'M44rt3np44uw\Justyo\Yo';
     }
 
 }

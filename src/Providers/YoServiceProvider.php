@@ -15,6 +15,13 @@ use M44rt3np44uw\Justyo\Yo;
 class YoServiceProvider extends ServiceProvider
 {
     /**
+     * Indicates if loading of the provider is deferred.
+     *
+     * @var bool
+     */
+    protected $defer = true;
+
+    /**
      * Bootstrap the application services.
      *
      * @return void
@@ -50,9 +57,9 @@ class YoServiceProvider extends ServiceProvider
      */
     private function registerBindings()
     {
-        $this->app->bind('yo.client', function()
+        $this->app->singleton('GuzzleHttp\Client', function()
         {
-            return new Client();
+            return new Client;
         });
     }
 
@@ -61,9 +68,9 @@ class YoServiceProvider extends ServiceProvider
      */
     private function registerYo()
     {
-        $this->app->bind('yo', function($app)
+        $this->app->bind('M44rt3np44uw\Justyo\Yo', function($app)
         {
-            return new Yo($app['yo.client']);
+            return new Yo($app['GuzzleHttp\Client']);
         });
     }
 
@@ -111,5 +118,18 @@ class YoServiceProvider extends ServiceProvider
     private function aliasExists($alias)
     {
         return array_key_exists($alias, AliasLoader::getInstance()->getAliases());
+    }
+
+    /**
+     * Get the services provided by the provider.
+     *
+     * @return array
+     */
+    public function provides()
+    {
+        return [
+            'M44rt3np44uw\Justyo\Yo',
+            'GuzzleHttp\Client'
+        ];
     }
 }

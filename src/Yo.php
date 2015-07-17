@@ -480,7 +480,7 @@ class Yo {
     private function post()
     {
         // The post result.
-        $result = $this->client->post($this->getApiUrl(), $this->getOptions('form_params'));
+        $result = $this->client->post($this->getApiUrl(), $this->getOptions('body'));
 
         // Return result.
         return $result->getBody();
