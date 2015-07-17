@@ -1,16 +1,10 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: maartenpaauw
- * Date: 07-07-15
- * Time: 21:24
- */
 
-namespace M44rt3np44uw\Justyo;
+namespace Appsketch\Justyo;
 
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Config;
-use M44rt3np44uw\Justyo\Exceptions\YoExceptions;
+use Appsketch\Justyo\Exceptions\YoExceptions;
 
 /**
  * Class Yo

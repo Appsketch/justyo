@@ -1,20 +1,19 @@
 # Yo Laravel
 
-[![Latest Stable Version](https://poser.pugx.org/m44rt3np44uw/justyo/v/stable)](https://packagist.org/packages/m44rt3np44uw/justyo) [![Total Downloads](https://poser.pugx.org/m44rt3np44uw/justyo/downloads)](https://packagist.org/packages/m44rt3np44uw/justyo) [![Latest Unstable Version](https://poser.pugx.org/m44rt3np44uw/justyo/v/unstable)](https://packagist.org/packages/m44rt3np44uw/justyo) [![License](https://poser.pugx.org/m44rt3np44uw/justyo/license)](https://packagist.org/packages/m44rt3np44uw/justyo)
-
+[![Latest Stable Version](https://poser.pugx.org/appsketch/justyo/v/stable)](https://packagist.org/packages/appsketch/justyo) [![Total Downloads](https://poser.pugx.org/appsketch/justyo/downloads)](https://packagist.org/packages/appsketch/justyo) [![Latest Unstable Version](https://poser.pugx.org/appsketch/justyo/v/unstable)](https://packagist.org/packages/appsketch/justyo) [![License](https://poser.pugx.org/appsketch/justyo/license)](https://packagist.org/packages/appsketch/justyo)
 ## Installation
 
 First, pull in the package through Composer.
 
 ```js
-composer require m44rt3np44uw/justyo
+composer require appsketch/justyo
 ```
 
 And then, if using Laravel 5.1, include the service provider within `app/config/app.php`.
 
 ```php
 'providers' => [
-    M44rt3np44uw\Justyo\Providers\YoServiceProvider::class,
+    Appsketch\Justyo\Providers\YoServiceProvider::class,
 ]
 ```
 
@@ -24,7 +23,7 @@ If using Laravel 5. Include this service provider.
 
 ```php
 'providers' => [
-   "M44rt3np44uw\Justyo\Providers\YoServiceProvider"
+   "Appsketch\Justyo\Providers\YoServiceProvider"
 ]
 ```
 

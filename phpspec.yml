@@ -1,4 +1,4 @@
 suites:
   library_suite:
-    namespace: M44rt3np44uw\Justyo
-    psr4_prefix: M44rt3np44uw\Justyo
+    namespace: Appsketch\Justyo
+    psr4_prefix: Appsketch\Justyo

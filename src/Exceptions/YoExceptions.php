@@ -1,12 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: maartenpaauw
- * Date: 07-07-15
- * Time: 22:03
- */
 
-namespace M44rt3np44uw\Justyo\Exceptions;
+namespace Appsketch\Justyo\Exceptions;
 
 /**
  * Class YoExceptions

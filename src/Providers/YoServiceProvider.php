@@ -1,11 +1,11 @@
 <?php
 
-namespace M44rt3np44uw\Justyo\Providers;
+namespace Appsketch\Justyo\Providers;
 
 use GuzzleHttp\Client;
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\ServiceProvider;
-use M44rt3np44uw\Justyo\Yo;
+use Appsketch\Justyo\Yo;
 
 /**
  * Class YoServiceProvider
@@ -83,7 +83,7 @@ class YoServiceProvider extends ServiceProvider
         {
             AliasLoader::getInstance()->alias(
                 'Yo',
-                \M44rt3np44uw\Justyo\Facades\Yo::class
+                \Appsketch\Justyo\Facades\Yo::class
             );
         }
     }
