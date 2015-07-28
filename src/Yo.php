@@ -3,6 +3,7 @@
 namespace Appsketch\Justyo;
 
 use GuzzleHttp\Client;
+use GuzzleHttp\Exception\ClientException;
 use Illuminate\Support\Facades\Config;
 use Appsketch\Justyo\Exceptions\YoExceptions;
 
@@ -362,6 +363,52 @@ class Yo {
     }
 
     /**
+     * Get the followers.
+     *
+     * @param $username
+     *
+     * @return mixed
+     * @throws YoExceptions
+     */
+    public function get_followers($username)
+    {
+        // Merge the username to the options array.
+        $this->setUsername($username);
+
+        // Check the options array.
+        $this->checkOptions(['username']);
+
+        // Set the API url.
+        $this->setApiUrl('rpc/get_followers/');
+
+        // Return result.
+        return $this->post();
+    }
+
+    /**
+     * Get the contacts.
+     *
+     * @param $username
+     *
+     * @return mixed
+     * @throws YoExceptions
+     */
+    public function get_contacts($username)
+    {
+        // Merge the username to the options array.
+        $this->setUsername($username);
+
+        // Check the options array.
+        $this->checkOptions(['username']);
+
+        // Set the API url.
+        $this->setApiUrl('rpc/get_contacts/');
+
+        // Return result.
+        return $this->post();
+    }
+
+    /**
      * Initialize the options array.
      */
     private function initOptions()
@@ -474,7 +521,7 @@ class Yo {
     private function post()
     {
         // The post result.
-        $result = $this->client->post($this->getApiUrl(), $this->getOptions('body'));
+        $result = $this->client->post($this->getApiUrl(), $this->getOptions('form_params'));
 
         // Return result.
         return $result->getBody();
