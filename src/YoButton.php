@@ -20,6 +20,11 @@ class YoButton
     private $button_trigger;
 
     /**
+     * @var
+     */
+    private $str_replace;
+
+    /**
      * @param $button_username
      * @param $button_trigger
      *
@@ -32,6 +37,9 @@ class YoButton
 
         // Set the trigger.
         $this->button_trigger  = $button_trigger;
+
+        // Set search and replace.
+        $this->str_replace();
 
         // Return this.
         return $this;
@@ -74,6 +82,17 @@ class YoButton
     }
 
     /**
+     * String replace array.
+     */
+    private function str_replace()
+    {
+        $this->str_replace = [
+            '{{username}}' => $this->button_username,
+            '{{trigger}}'  => $this->button_trigger
+        ];
+    }
+
+    /**
      * Get the button's HTML.
      *
      * @return string
@@ -94,11 +113,10 @@ class YoButton
         // Get the button javascript stub.
         $stub = file_get_contents(__DIR__ . '/stubs/javascript.stub');
 
-        // Replace the username.
-        $stub = str_replace('{{username}}', $this->button_username, $stub);
-
-        // Replace the trigger.
-        $stub = str_replace('{{trigger}}', $this->button_trigger, $stub);
+        // Replace username and trigger.
+        foreach ($this->str_replace as $find => $replace) {
+            $stub = str_replace($find, $replace, $stub);
+        }
 
         // Return the javascript stub.
         return $stub;
