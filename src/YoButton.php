@@ -58,6 +58,7 @@ class YoButton
      */
     public function html()
     {
+        // Return the button HTML.
         return $this->button_html();
     }
 
@@ -68,6 +69,7 @@ class YoButton
      */
     public function javascript()
     {
+        // Return the button javascript.
         return $this->button_javascript();
     }
 

@@ -46,13 +46,13 @@ Route::get('/button', function()
     $button = Yo::button('m44rt3np44uw', 'When he like to Yo');
     
     // Render the Yo button.
-    $button->render();
+    echo $button->render();
     
     // Only render the HTML.
-    $button->html();
+    echo $button->html();
     
     // Only render the javascript.
-    $button->javascript();
+    echo $button->javascript();
 });
 
 Route::get('/yo/all', function()
