@@ -43,7 +43,7 @@ Within, for example the routes.php add this.
 Route::get('/button', function()
 {
     // Button.
-    $button = Yo::button('m44rt3np44uw', 'When I like to Yo');
+    $button = Yo::button('m44rt3np44uw', 'When he like to Yo');
     
     // Render the Yo button.
     $button->render();
