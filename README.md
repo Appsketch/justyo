@@ -39,6 +39,22 @@ key the account name (uppercase) and as value the api_token.
 Within, for example the routes.php add this.
 
 ```php
+
+Route::get('/button', function()
+{
+    // Button.
+    $button = Yo::button('m44rt3np44uw', 'When I like to Yo');
+    
+    // Render the Yo button.
+    $button->render();
+    
+    // Only render the HTML.
+    $button->html();
+    
+    // Only render the javascript.
+    $button->javascript();
+});
+
 Route::get('/yo/all', function()
 {
     // Link

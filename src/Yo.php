@@ -12,7 +12,7 @@ use Appsketch\Justyo\Exceptions\YoExceptions;
  *
  * @package Appsketch\Justyo
  */
-class Yo {
+class Yo extends YoButton {
 
     /**
      * API URL
