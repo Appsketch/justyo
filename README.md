@@ -161,4 +161,22 @@ Route::get('/yo/create', function()
     // Alias
     Yo::create('m44rt3np44uw', $account_data);
 });
+
+Route::get('/yo/followers', function()
+{
+    // Followers
+    $followers = Yo::get_followers('m44rt3np44uw');
+    
+    // Echo the followers.
+    echo $followers;
+});
+
+Route::get('/yo/contacts', function()
+{
+    // Contacts
+    $contacts = Yo::get_contacts('m44rtn3p44uw');
+    
+    // Echo the contacts.
+    echo $contacts.
+});
 ```
