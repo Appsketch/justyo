@@ -520,7 +520,6 @@ class Yo {
      */
     private function post()
     {
-
         // The post result.
         $result = $this->client->post($this->getApiUrl(), $this->getOptions('form_params'));
 
