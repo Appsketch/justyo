@@ -174,7 +174,7 @@ Route::get('/yo/followers', function()
 Route::get('/yo/contacts', function()
 {
     // Contacts
-    $contacts = Yo::get_contacts('m44rtn3p44uw');
+    $contacts = Yo::get_contacts('m44rt3np44uw');
     
     // Echo the contacts.
     echo $contacts.
