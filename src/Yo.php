@@ -379,7 +379,7 @@ class Yo {
         $this->checkOptions(['username']);
 
         // Set the API url.
-        $this->setApiUrl('rpc/get_followers/');
+        $this->setApiUrl('rpc/get_followers');
 
         // Return result.
         return $this->post();
@@ -402,7 +402,7 @@ class Yo {
         $this->checkOptions(['username']);
 
         // Set the API url.
-        $this->setApiUrl('rpc/get_contacts/');
+        $this->setApiUrl('rpc/get_contacts');
 
         // Return result.
         return $this->post();
@@ -520,6 +520,7 @@ class Yo {
      */
     private function post()
     {
+
         // The post result.
         $result = $this->client->post($this->getApiUrl(), $this->getOptions('form_params'));
 
