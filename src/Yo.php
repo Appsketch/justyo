@@ -408,6 +408,21 @@ class Yo extends YoButton {
         return $this->post();
     }
 
+
+    /**
+     * List all the created API accounts.
+     *
+     * @return mixed
+     */
+    public function list_my_api_accounts()
+    {
+        // Set the API url/
+        $this->setApiUrl('rpc/list_my_api_accounts');
+
+        // Return result.
+        return $this->post();
+    }
+
     /**
      * Initialize the options array.
      */
